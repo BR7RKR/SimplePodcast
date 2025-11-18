@@ -1,17 +1,26 @@
 <Project>
-    <PropertyGroup>
-        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-    </PropertyGroup>
-    <ItemGroup>
-        <PackageVersion Include="Avalonia" Version="11.2.1" />
-        <PackageVersion Include="Avalonia.Themes.Fluent" Version="11.2.1" />
-        <PackageVersion Include="Avalonia.Fonts.Inter" Version="11.2.1" />
-        <PackageVersion Include="Avalonia.Diagnostics" Version="11.2.1" />
-        <PackageVersion Include="Avalonia.Desktop" Version="11.2.1" />
-        <PackageVersion Include="Avalonia.iOS" Version="11.2.1" />
-        <PackageVersion Include="Avalonia.Browser" Version="11.2.1" />
-        <PackageVersion Include="Avalonia.Android" Version="11.2.1" />
-        <PackageVersion Include="Avalonia.ReactiveUI" Version="11.2.1" />
-        <PackageVersion Include="Xamarin.AndroidX.Core.SplashScreen" Version="1.0.1.1" />
-    </ItemGroup>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="Avalonia" Version="11.3.7" />
+    <PackageVersion Include="Avalonia.Fonts.Inter" Version="11.3.7" />
+    <PackageVersion Include="Avalonia.Diagnostics" Version="11.3.7" />
+    <PackageVersion Include="Avalonia.Desktop" Version="11.3.8" />
+    <PackageVersion Include="Avalonia.iOS" Version="11.3.8" />
+    <PackageVersion Include="Avalonia.Browser" Version="11.3.7" />
+    <PackageVersion Include="Avalonia.Android" Version="11.3.7" />
+    <PackageVersion Include="DynamicData" Version="9.4.1" />
+    <PackageVersion Include="Irihi.Ursa" Version="1.14.0" />
+    <PackageVersion Include="Irihi.Ursa.ReactiveUIExtension" Version="1.1.0" />
+    <PackageVersion Include="Irihi.Ursa.Themes.Semi" Version="1.14.0" />
+    <PackageVersion Include="Material.Icons" Version="2.4.1" />
+    <PackageVersion Include="Material.Icons.Avalonia" Version="2.4.1" />
+    <PackageVersion Include="ReactiveUI" Version="22.2.1" />
+    <PackageVersion Include="ReactiveUI.Avalonia" Version="11.3.0" />
+    <PackageVersion Include="Semi.Avalonia" Version="11.3.7.1" />
+    <PackageVersion Include="Splat" Version="17.1.1" />
+    <PackageVersion Include="System.Reactive" Version="6.1.0" />
+    <PackageVersion Include="Xamarin.AndroidX.Core.SplashScreen" Version="1.0.1.1" />
+  </ItemGroup>
 </Project>

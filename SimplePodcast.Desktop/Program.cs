@@ -1,6 +1,6 @@
 ﻿using System;
 using Avalonia;
-using Avalonia.ReactiveUI;
+using ReactiveUI.Avalonia;
 
 namespace SimplePodcast.Desktop;
 
@@ -18,6 +18,9 @@ sealed class Program
         => AppBuilder.Configure<App>()
             .UsePlatformDetect()
             .WithInterFont()
+            .With(new Win32PlatformOptions { OverlayPopups = true }) // Windows
+            .With(new X11PlatformOptions { OverlayPopups = true, UseDBusFilePicker = false }) // Unix/Linux
+            .With(new AvaloniaNativePlatformOptions { OverlayPopups = true }) // Mac
             .UseReactiveUI()
             .LogToTrace();
 }
