@@ -1,0 +1,31 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:viewModels="clr-namespace:SimplePodcast.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="400"
+             x:Class="SimplePodcast.Views.HeaderView"
+             x:DataType="viewModels:HeaderViewModel">
+    <Design.DataContext>
+        <viewModels:HeaderViewModel/>
+    </Design.DataContext>
+    <Border CornerRadius="0 0 6 6" Background="{DynamicResource SemiColorBackground1}">
+        <Grid 
+            ColumnDefinitions="Auto,*,Auto" 
+            HorizontalAlignment="Stretch">
+            <Button Grid.Column="0" 
+                    DockPanel.Dock="Left" 
+                    Theme="{DynamicResource BorderlessButton}" Background="Transparent"
+                    Command="{CompiledBinding OpenAddSourceDialogCommand}">
+                <avalonia:MaterialIcon Kind="AddCircle" Width="24" Height="24"/>
+            </Button>
+            <Button Grid.Column="2" 
+                    DockPanel.Dock="Right" 
+                    Theme="{DynamicResource BorderlessButton}" Background="Transparent"
+                    Command="{CompiledBinding ChangeSettingsVisibilityCommand}">
+                <avalonia:MaterialIcon Kind="Menu" Width="24" Height="24"/>
+            </Button>
+        </Grid>
+    </Border>
+</UserControl>

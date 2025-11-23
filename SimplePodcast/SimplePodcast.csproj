@@ -26,20 +26,21 @@
         <PackageReference Include="Material.Icons.Avalonia" />
         <PackageReference Include="ReactiveUI" />
         <PackageReference Include="ReactiveUI.Avalonia" />
+        <PackageReference Include="ReactiveUI.SourceGenerators">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
         <PackageReference Include="Semi.Avalonia" />
-        <PackageReference Include="Splat" />
         <PackageReference Include="System.Reactive" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Views\Header\" />
-      <Folder Include="Views\Player\" />
-      <Folder Include="Views\PodcastsList\" />
     </ItemGroup>
 
     <ItemGroup>
       <Compile Update="App.axaml.cs">
         <DependentUpon>App.axaml</DependentUpon>
+      </Compile>
+      <Compile Update="Views\Header\AddSourceDialog\AddSourceDialogView.axaml.cs">
+        <DependentUpon>AddSourceDialogView.axaml</DependentUpon>
+        <SubType>Code</SubType>
       </Compile>
     </ItemGroup>
 </Project>

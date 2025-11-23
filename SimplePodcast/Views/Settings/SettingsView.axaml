@@ -1,0 +1,30 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:views="clr-namespace:SimplePodcast.Views"
+             xmlns:viewModels="clr-namespace:SimplePodcast.ViewModels"
+             mc:Ignorable="d"
+             x:Class="SimplePodcast.Views.SettingsView"
+             x:DataType="viewModels:SettingsViewModel">
+    <DockPanel VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10" VerticalSpacing="20">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" DockPanel.Dock="Top" Spacing="60">
+            <Button Theme="{DynamicResource BorderlessButton}" Classes="Secondary">
+                <avalonia:MaterialIcon Kind="ThemeLightDark" Width="32" Height="32"/>
+            </Button>
+            <Button Theme="{DynamicResource BorderlessButton}" Classes="Secondary">
+                <avalonia:MaterialIcon Kind="Language" Width="32" Height="32"/>
+            </Button>
+        </StackPanel>
+        <ListBox DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+            <views:SourceView/>
+            <views:SourceView/>
+            <views:SourceView/>
+            <views:SourceView/>
+        </ListBox>
+        <Button DockPanel.Dock="Bottom">
+            <TextBlock Text="Clear Cache"/>
+        </Button>
+    </DockPanel>
+</UserControl>

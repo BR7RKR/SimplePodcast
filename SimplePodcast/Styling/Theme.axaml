@@ -1,13 +1,15 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:semi="https://irihi.tech/semi"
-        xmlns:u-semi="https://irihi.tech/ursa/themes/semi">
+        xmlns:u-semi="https://irihi.tech/ursa/themes/semi"
+        xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
     <Design.PreviewWith>
         <Border Padding="20">
             <!-- Add Controls for Previewer Here -->
         </Border>
     </Design.PreviewWith>
     
-    <semi:SemiTheme />
-    <u-semi:SemiTheme />
+    <semi:SemiTheme Locale="en-US"/>
+    <u-semi:SemiTheme Locale="en-US"/>
+    <avalonia:MaterialIconStyles/>
 </Styles>
