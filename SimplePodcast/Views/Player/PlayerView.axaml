@@ -1,0 +1,41 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             mc:Ignorable="d"
+             x:Class="SimplePodcast.Views.PlayerView">
+    <Border
+        Background="{DynamicResource SemiColorBackground1}"
+        CornerRadius="6" 
+        Padding="5">
+        <Grid
+            RowDefinitions="Auto * Auto" 
+            HorizontalAlignment="Stretch" 
+            RowSpacing="5">
+            <TextBlock Grid.Row="0" Theme="{DynamicResource TitleTextBlock}" Text="Title" Classes="H4"/>
+            <Slider Grid.Row="1" 
+                    HorizontalAlignment="Stretch"
+                    Minimum="0" 
+                    IsSnapToTickEnabled="False" 
+                    TickFrequency="1"/>
+            <Grid ColumnSpacing="3" ColumnDefinitions="*, *, *, *, *" Grid.Row="2">
+                <Button Grid.Column="0" Theme="{DynamicResource BorderlessButton}" Classes="Tertiary">
+                    <avalonia:MaterialIcon Kind="SkipPrevious" Width="24" Height="24"/>
+                </Button>
+                <Button Grid.Column="1" Theme="{DynamicResource BorderlessButton}" Classes="Tertiary">
+                    <avalonia:MaterialIcon Kind="Rewind" Width="24" Height="24"/>
+                </Button>
+                <Button Grid.Column="2" Theme="{DynamicResource BorderlessButton}" Classes="Primary">
+                    <avalonia:MaterialIcon Kind="PlayCircleOutline" Width="32" Height="32"/>
+                </Button>
+                <Button Grid.Column="3" Theme="{DynamicResource BorderlessButton}" Classes="Tertiary">
+                    <avalonia:MaterialIcon Kind="FastForward" Width="24" Height="24"/>
+                </Button>
+                <Button Grid.Column="4" Theme="{DynamicResource BorderlessButton}" Classes="Tertiary">
+                    <avalonia:MaterialIcon Kind="SkipNext" Width="24" Height="24"/>
+                </Button>
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>

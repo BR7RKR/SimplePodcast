@@ -1,0 +1,36 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:podcast="clr-namespace:SimplePodcast.Views.Podcast"
+             xmlns:u="https://irihi.tech/ursa"
+             mc:Ignorable="d" d:DesignWidth="400"
+             x:Class="SimplePodcast.Views.PodcastsListView">
+    <Design.PreviewWith>
+    </Design.PreviewWith>
+    
+    <u:SelectionList
+        ScrollViewer.VerticalScrollBarVisibility="Auto" 
+        ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+        Margin="0,10">
+        <u:SelectionList.Styles>
+            <Style Selector="u|SelectionListItem">
+                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            </Style>
+        </u:SelectionList.Styles>
+        <u:SelectionList.ItemsPanel>
+            <ItemsPanelTemplate>
+                <StackPanel Spacing="1"/>
+            </ItemsPanelTemplate>
+        </u:SelectionList.ItemsPanel>
+            
+        <podcast:PodcastView />
+        <podcast:PodcastView />
+        <podcast:PodcastView />
+        <podcast:PodcastView />
+        <podcast:PodcastView />
+        <podcast:PodcastView />
+        <podcast:PodcastView />
+        <podcast:PodcastView />
+    </u:SelectionList>
+</UserControl>

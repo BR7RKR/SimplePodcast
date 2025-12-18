@@ -1,0 +1,26 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodel="clr-namespace:SimplePodcast.ViewModels"
+             mc:Ignorable="d"
+             x:Class="SimplePodcast.Views.AddSourceDialogView"
+             x:DataType="viewmodel:AddSourceDialogViewModel">
+    <TabControl
+        ItemsSource="{CompiledBinding Tabs}"
+        SelectedItem="{CompiledBinding SelectedTab}">
+        
+        <TabControl.ItemTemplate>
+            <DataTemplate DataType="viewmodel:SourceTypeViewModelBase">
+                <TextBlock Text="{CompiledBinding Title}" />
+            </DataTemplate>
+        </TabControl.ItemTemplate>
+
+        <TabControl.ContentTemplate>
+            <DataTemplate DataType="viewmodel:SourceTypeViewModelBase">
+                <ContentControl Content="{CompiledBinding }" />
+            </DataTemplate>
+        </TabControl.ContentTemplate>
+        
+    </TabControl>
+</UserControl>

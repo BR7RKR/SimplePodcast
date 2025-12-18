@@ -1,0 +1,18 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="400"
+             x:Class="SimplePodcast.Views.Podcast.PodcastView">
+    <Grid Margin="4" ColumnDefinitions="Auto, *, Auto" ColumnSpacing="4">
+        <icons:MaterialIcon Grid.Column="0" Kind="AccountCircleOutline" Width="32" Height="32"/>
+        <StackPanel Orientation="Vertical" Grid.Column="1">
+            <TextBlock Text="Podcast Title"/>
+            <TextBlock Text="Src" FontSize="{DynamicResource SemiFontSizeSmall}" Classes="Secondary H1"/>
+        </StackPanel>
+        <Button Grid.Column="2" Theme="{DynamicResource BorderlessButton}" Classes="Secondary">
+            <icons:MaterialIcon Kind="DotsVertical" Width="24" Height="24"/>
+        </Button>
+    </Grid>
+</UserControl>

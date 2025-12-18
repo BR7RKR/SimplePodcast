@@ -3,14 +3,37 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:SimplePodcast.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:views="clr-namespace:SimplePodcast.Views"
+             xmlns:u="https://irihi.tech/ursa"
+             mc:Ignorable="d"
              x:Class="SimplePodcast.Views.MainView"
              x:DataType="vm:MainViewModel">
-  <Design.DataContext>
-    <!-- This only sets the DataContext for the previewer in an IDE,
-         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-    <vm:MainViewModel />
-  </Design.DataContext>
-
-  <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <Design.DataContext>
+        <vm:MainViewModel />
+    </Design.DataContext>
+    
+    <Grid>
+        <DockPanel>
+            <views:HeaderView
+                DockPanel.Dock="Top" 
+                VerticalAlignment="Top" 
+                HorizontalAlignment="Stretch"
+                DataContext="{CompiledBinding HeaderViewModel}"/>
+            <views:SettingsView
+                DockPanel.Dock="Top"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                IsVisible="{CompiledBinding IsSettingsVisible}"
+                />
+            <views:PodcastsListView 
+                DockPanel.Dock="Top"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                IsVisible="{CompiledBinding !IsSettingsVisible}"/>
+            <views:PlayerView 
+                DockPanel.Dock="Bottom" 
+                VerticalAlignment="Bottom"/>
+        </DockPanel>
+        <u:OverlayDialogHost/>
+    </Grid>
 </UserControl>
