@@ -14,7 +14,7 @@ public sealed class AddSourceDialogViewModel : ViewModelBase
         SelectedTab = rssSource;
     }
     
-    public IReadOnlyList<ViewModelBase> Tabs { get; }
+    public IReadOnlyList<SourceTypeViewModelBase> Tabs { get; }
 
     public SourceTypeViewModelBase? SelectedTab
     {

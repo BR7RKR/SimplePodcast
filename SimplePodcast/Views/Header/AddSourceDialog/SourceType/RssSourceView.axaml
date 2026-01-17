@@ -8,6 +8,6 @@
              x:DataType="viewmodel:RssSourceViewModel">
     <StackPanel Orientation="Vertical" Spacing="4">
         <TextBlock Text="RSS feed"/>
-        <TextBox Text="{CompiledBinding Rss}"></TextBox>
+        <TextBox Text="{CompiledBinding Rss}" TextWrapping="NoWrap"></TextBox>
     </StackPanel>
 </UserControl>

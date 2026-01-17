@@ -24,12 +24,14 @@
         <PackageReference Include="Irihi.Ursa.Themes.Semi" />
         <PackageReference Include="Material.Icons" />
         <PackageReference Include="Material.Icons.Avalonia" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
         <PackageReference Include="ReactiveUI" />
         <PackageReference Include="ReactiveUI.Avalonia" />
         <PackageReference Include="ReactiveUI.SourceGenerators">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="ReactiveUI.Validation" />
         <PackageReference Include="Semi.Avalonia" />
         <PackageReference Include="System.Reactive" />
     </ItemGroup>
@@ -42,5 +44,13 @@
         <DependentUpon>AddSourceDialogView.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Core\Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Controls\" />
     </ItemGroup>
 </Project>
