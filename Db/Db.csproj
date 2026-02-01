@@ -6,4 +6,12 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Dapper" />
+      <PackageReference Include="FluentMigrator" />
+      <PackageReference Include="FluentMigrator.Runner.SQLite" />
+      <PackageReference Include="Microsoft.Data.Sqlite" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    </ItemGroup>
+
 </Project>

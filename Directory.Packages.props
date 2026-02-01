@@ -10,17 +10,26 @@
     <PackageVersion Include="Avalonia.iOS" Version="11.3.8" />
     <PackageVersion Include="Avalonia.Browser" Version="11.3.7" />
     <PackageVersion Include="Avalonia.Android" Version="11.3.7" />
+    <PackageVersion Include="Dapper" Version="2.1.66" />
     <PackageVersion Include="DynamicData" Version="9.4.1" />
+    <PackageVersion Include="FluentMigrator" Version="8.0.0" />
+    <PackageVersion Include="FluentMigrator.Runner.SQLite" Version="8.0.0" />
     <PackageVersion Include="Irihi.Ursa" Version="1.14.0" />
     <PackageVersion Include="Irihi.Ursa.ReactiveUIExtension" Version="1.1.0" />
     <PackageVersion Include="Irihi.Ursa.Themes.Semi" Version="1.14.0" />
     <PackageVersion Include="Material.Icons" Version="2.4.1" />
     <PackageVersion Include="Material.Icons.Avalonia" Version="2.4.1" />
+    <PackageVersion Include="Microsoft.Data.Sqlite" Version="10.0.2" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="10.0.2" />
+    <PackageVersion Include="Microsoft.Extensions.Http" Version="10.0.2" />
     <PackageVersion Include="ReactiveUI" Version="22.2.1" />
     <PackageVersion Include="ReactiveUI.Avalonia" Version="11.3.0" />
     <PackageVersion Include="ReactiveUI.SourceGenerators" Version="2.5.1" />
+    <PackageVersion Include="ReactiveUI.Validation" Version="6.0.5" />
     <PackageVersion Include="Semi.Avalonia" Version="11.3.7.1" />
     <PackageVersion Include="System.Reactive" Version="6.1.0" />
+    <PackageVersion Include="System.ServiceModel.Syndication" Version="10.0.2" />
     <PackageVersion Include="Xamarin.AndroidX.Core.SplashScreen" Version="1.0.1.1" />
+    <PackageVersion Include="YoutubeExplodeNoPolytics" Version="7.0.1" />
   </ItemGroup>
 </Project>

@@ -8,6 +8,6 @@
              x:DataType="viewmodel:YoutubeSourceViewModel">
     <StackPanel Orientation="Vertical" Spacing="4">
         <TextBlock Text="Url"/>
-        <TextBox Text="{CompiledBinding Url}"></TextBox>
+        <TextBox Text="{CompiledBinding Url}" TextWrapping="NoWrap"></TextBox>
     </StackPanel>
 </UserControl>

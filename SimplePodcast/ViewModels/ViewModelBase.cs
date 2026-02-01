@@ -3,10 +3,12 @@ using System.Reactive.Disposables;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using ReactiveUI;
+using ReactiveUI.Validation.Helpers;
+using Ursa.Controls;
 
 namespace SimplePodcast.ViewModels;
 
-public abstract class ViewModelBase : ReactiveObject, IDisposable
+public abstract class ViewModelBase : ReactiveValidationObject
 {
     private int _isDisposed;
     protected ViewModelBase()
@@ -16,12 +18,6 @@ public abstract class ViewModelBase : ReactiveObject, IDisposable
     
     public CompositeDisposable Disposables { get; }
     public bool IsDisposed => _isDisposed != 0;
-    
-    public void Dispose()
-    {
-        Dispose(true);
-        GC.SuppressFinalize(this);
-    }
     
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     protected void ThrowIfDisposed()
@@ -34,7 +30,7 @@ public abstract class ViewModelBase : ReactiveObject, IDisposable
         throw new ObjectDisposedException(GetType().FullName);
     }
     
-    protected virtual void Dispose(bool disposing)
+    protected override void Dispose(bool disposing)
     {
         if (Interlocked.CompareExchange(ref _isDisposed, 1, 0) == 1)
         {

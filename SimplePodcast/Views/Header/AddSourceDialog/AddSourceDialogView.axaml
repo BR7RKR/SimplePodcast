@@ -5,7 +5,9 @@
              xmlns:viewmodel="clr-namespace:SimplePodcast.ViewModels"
              mc:Ignorable="d"
              x:Class="SimplePodcast.Views.AddSourceDialogView"
-             x:DataType="viewmodel:AddSourceDialogViewModel">
+             x:DataType="viewmodel:AddSourceDialogViewModel"
+             MaxWidth="350"
+             Width="350">
     <TabControl
         ItemsSource="{CompiledBinding Tabs}"
         SelectedItem="{CompiledBinding SelectedTab}">

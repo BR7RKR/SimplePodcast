@@ -1,5 +1,7 @@
+using System;
 using System.Reactive;
 using System.Reactive.Disposables.Fluent;
+using Core;
 using ReactiveUI;
 using SimplePodcast.Views;
 using Ursa.Controls;
@@ -8,7 +10,13 @@ namespace SimplePodcast.ViewModels;
 
 public sealed class HeaderViewModel : ViewModelBase
 {
-    public HeaderViewModel()
+    public HeaderViewModel() 
+        : this(new NullSourcesService(), new NullNotificationManagerHost())
+    {
+        DesignTime.ThrowIfNotDesignTime();
+    }
+    
+    public HeaderViewModel(ISourcesService sourcesService, INotificationManagerHost notificationManagerHost)
     {
         ChangeSettingsVisibilityCommand = ReactiveCommand.Create(() =>
         {
@@ -16,6 +24,7 @@ public sealed class HeaderViewModel : ViewModelBase
         }, outputScheduler: RxApp.MainThreadScheduler).DisposeWith(Disposables);
         OpenAddSourceDialogCommand = ReactiveCommand.CreateFromTask(async (ct) =>
         {
+            var notificationManager = notificationManagerHost.GetNotificationManager();
             using var vm = new AddSourceDialogViewModel();
             var result = await OverlayDialog.ShowModal<AddSourceDialogView, AddSourceDialogViewModel>(
                 vm,
@@ -24,9 +33,36 @@ public sealed class HeaderViewModel : ViewModelBase
                     Title = "Add new source for podcasts",
                     Mode = DialogMode.None,
                     Buttons = DialogButton.OKCancel,
+                    CanResize = false,
                 }, 
                 token: ct
             );
+
+            if (result != DialogResult.OK)
+            {
+                return;
+            }
+            
+            var data = vm.SelectedTab?.GetSourceData();
+            
+            if (data is null)
+            {
+                notificationManager.ShowError(
+                    "Filed to read url:", 
+                    "Provided string is not a valid url"
+                );
+                return;
+            }
+
+            try
+            {
+                await sourcesService.AddSourceAsync(data, ct);
+                notificationManager.ShowSuccess("Source added successfully!");
+            }
+            catch (Exception e)
+            {
+                notificationManager.ShowError("Failed to add source:", e);
+            }
         }, outputScheduler: RxApp.MainThreadScheduler).DisposeWith(Disposables);
     }
     
