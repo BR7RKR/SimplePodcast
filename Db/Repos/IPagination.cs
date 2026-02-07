@@ -1,11 +1,11 @@
 namespace Db;
 
-public interface IPagination<out TEntity>
+public interface IPagination<TEntity>
 {
-    public IAsyncEnumerable<TEntity> GetManyAsync(
-        Action<TEntity> predicate, 
-        int skip, 
-        int take, 
+    public Task<IEnumerable<TEntity>> GetManyAsync(
+        Action<TEntity>? predicate = null,
+        int? skip = null,
+        int? take = null,
         CancellationToken cancel = default
     );
 }

@@ -19,9 +19,9 @@ public sealed class SourcesService : ISourcesService
     
     public async Task AddSourceAsync(ISourceData sourceData, CancellationToken cancel = default)
     {
-        await ValidateSourceDataAsync(sourceData, cancel);
+        await ValidateSourceDataAsync(sourceData, cancel).ConfigureAwait(false);
         
-        var existing = await _repository.GetAsync(sourceData.Id, cancel);
+        var existing = await _repository.GetAsync(sourceData.Id, cancel).ConfigureAwait(false);
 
         if (existing is not null)
         {
@@ -34,12 +34,24 @@ public sealed class SourcesService : ISourcesService
             Type = sourceData.Type,
         };
             
-        await _repository.CreateAsync(source, cancel);
+        await _repository.CreateAsync(source, cancel).ConfigureAwait(false);
+    }
+
+    public async Task<IEnumerable<ISourceData>> GetAllSourcesAsync(CancellationToken cancel = default)
+    {
+        var data = await _repository.GetManyAsync(cancel: cancel).ConfigureAwait(false);
+        
+        return data.Select(s => new SourceData
+        {
+            Id = s.Id,
+            Url = s.Url,
+            Type = s.Type,
+        });
     }
 
     public async Task RemoveSourceAsync(ISourceData sourceUri, CancellationToken cancel = default)
     {
-        await _repository.DeleteAsync(sourceUri.Id, cancel);
+        await _repository.DeleteAsync(sourceUri.Id, cancel).ConfigureAwait(false);
     }
     
     private async Task ValidateSourceDataAsync(ISourceData sourceData, CancellationToken cancel = default)
@@ -51,7 +63,7 @@ public sealed class SourcesService : ISourcesService
             throw new NoValidatorForSourceDataException(sourceData.Type);
         }
         
-        var isValid = await validator.IsValidAsync(sourceData, cancel);
+        var isValid = await validator.IsValidAsync(sourceData, cancel).ConfigureAwait(false);
 
         if (!isValid)
         {

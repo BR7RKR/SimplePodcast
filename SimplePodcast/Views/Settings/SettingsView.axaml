@@ -17,11 +17,14 @@
                 <avalonia:MaterialIcon Kind="Language" Width="32" Height="32"/>
             </Button>
         </StackPanel>
-        <ListBox DockPanel.Dock="Top" HorizontalAlignment="Stretch">
-            <views:SourceView/>
-            <views:SourceView/>
-            <views:SourceView/>
-            <views:SourceView/>
+        <ListBox DockPanel.Dock="Top" 
+                 HorizontalAlignment="Stretch" 
+                 Items="{CompiledBinding SourcesView}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <views:SourceView/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
         </ListBox>
         <Button DockPanel.Dock="Bottom">
             <TextBlock Text="Clear Cache"/>

@@ -1,7 +1,6 @@
 using System;
 using System.Reactive;
 using System.Reactive.Disposables.Fluent;
-using Core;
 using ReactiveUI;
 using SimplePodcast.Views;
 using Ursa.Controls;
@@ -11,12 +10,12 @@ namespace SimplePodcast.ViewModels;
 public sealed class HeaderViewModel : ViewModelBase
 {
     public HeaderViewModel() 
-        : this(new NullSourcesService(), new NullNotificationManagerHost())
+        : this(new NullReactiveSourcesService(), new NullNotificationManagerHost())
     {
         DesignTime.ThrowIfNotDesignTime();
     }
     
-    public HeaderViewModel(ISourcesService sourcesService, INotificationManagerHost notificationManagerHost)
+    public HeaderViewModel(IReactiveSourcesService sourcesService, INotificationManagerHost notificationManagerHost)
     {
         ChangeSettingsVisibilityCommand = ReactiveCommand.Create(() =>
         {

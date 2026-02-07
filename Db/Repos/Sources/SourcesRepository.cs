@@ -57,10 +57,10 @@ public sealed class SourcesRepository : ISourcesRepository
         return result;
     }
 
-    public IAsyncEnumerable<Source> GetManyAsync(
-        Action<Source> predicate, 
-        int skip, 
-        int take, 
+    public Task<IEnumerable<Source>> GetManyAsync(
+        Action<Source>? predicate = null,
+        int? skip = null, 
+        int? take = null, 
         CancellationToken cancel = default
     )
     {

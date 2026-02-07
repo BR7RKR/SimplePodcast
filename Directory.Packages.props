@@ -28,6 +28,7 @@
     <PackageVersion Include="ReactiveUI.Validation" Version="6.0.5" />
     <PackageVersion Include="Semi.Avalonia" Version="11.3.7.1" />
     <PackageVersion Include="System.Reactive" Version="6.1.0" />
+    <PackageVersion Include="System.Reactive.Async" Version="6.0.0-alpha.18" />
     <PackageVersion Include="System.ServiceModel.Syndication" Version="10.0.2" />
     <PackageVersion Include="Xamarin.AndroidX.Core.SplashScreen" Version="1.0.1.1" />
     <PackageVersion Include="YoutubeExplodeNoPolytics" Version="7.0.1" />

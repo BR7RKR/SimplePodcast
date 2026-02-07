@@ -3,11 +3,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:viewModels="clr-namespace:SimplePodcast.ViewModels"
              mc:Ignorable="d"
-             x:Class="SimplePodcast.Views.SourceView">
+             x:Class="SimplePodcast.Views.SourceView"
+             x:DataType="viewModels:SourceViewModel">
     <Grid Margin="4" ColumnDefinitions="Auto, *, Auto" ColumnSpacing="4">
-        <icons:MaterialIcon Grid.Column="0" Kind="Web" Width="32" Height="32"/>
-        <TextBlock VerticalAlignment="Center" Grid.Column="1" Text="https://deepwiki.com/irihitech/Semi.Avalonia/2.3-text-input-controls"/>
+        <icons:MaterialIcon Grid.Column="0" Kind="{CompiledBinding Icon}" Width="32" Height="32"/>
+        <TextBlock VerticalAlignment="Center" Grid.Column="1" Text="{CompiledBinding Url}"/>
         <Button Grid.Column="2" Theme="{DynamicResource BorderlessButton}" Classes="Danger">
             <icons:MaterialIcon Kind="Delete" Width="24" Height="24"/>
         </Button>

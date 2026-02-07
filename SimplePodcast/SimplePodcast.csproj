@@ -34,6 +34,7 @@
         <PackageReference Include="ReactiveUI.Validation" />
         <PackageReference Include="Semi.Avalonia" />
         <PackageReference Include="System.Reactive" />
+        <PackageReference Include="System.Reactive.Async" />
     </ItemGroup>
 
     <ItemGroup>
@@ -52,5 +53,6 @@
 
     <ItemGroup>
       <Folder Include="Controls\" />
+      <Folder Include="Utils\Design\Services\" />
     </ItemGroup>
 </Project>

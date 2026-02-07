@@ -15,6 +15,7 @@ public static class CommonDependencies
         
         // Services
         services.AddSingleton<INotificationManagerHost, NotificationManagerHost>();
+        services.AddReactiveServices();
         
         return services;
     }
