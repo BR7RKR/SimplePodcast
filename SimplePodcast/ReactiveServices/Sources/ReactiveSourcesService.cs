@@ -1,13 +1,11 @@
 using System;
 using System.Collections.Generic;
-using System.Reactive;
 using System.Reactive.Disposables.Fluent;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using System.Threading;
 using System.Threading.Tasks;
 using Core;
-using ReactiveUI;
 
 namespace SimplePodcast;
 

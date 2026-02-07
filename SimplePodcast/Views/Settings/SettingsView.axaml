@@ -19,7 +19,7 @@
         </StackPanel>
         <ListBox DockPanel.Dock="Top" 
                  HorizontalAlignment="Stretch" 
-                 Items="{CompiledBinding SourcesView}">
+                 ItemsSource="{CompiledBinding SourcesView}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <views:SourceView/>

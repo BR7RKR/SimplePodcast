@@ -27,7 +27,7 @@ public class SettingsViewModel : ViewModelBase
             .Connect()
             .Transform(s => new SourceViewModel(s))
             .ObserveOn(RxSchedulers.MainThreadScheduler)
-            .Bind(out _sourcesView)
+            .Bind(out _sourcesView) // TODO: fix in design
             .DisposeMany()
             .Subscribe()
             .DisposeWith(Disposables);

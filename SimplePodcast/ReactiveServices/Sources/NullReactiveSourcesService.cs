@@ -35,7 +35,7 @@ public sealed class NullReactiveSourcesService : IReactiveSourcesService
     public IObservable<SourceChangedInfo> OnSourcesChanged => Observable.Empty<SourceChangedInfo>();
     public IObservable<ISourceData> OnSourceAdded => Observable.Empty<ISourceData>();
     public IObservable<ISourceData> OnSourceRemoved => Observable.Empty<ISourceData>();
-    public IObservable<ISourceData> SourcesStream => Observable.Empty<ISourceData>();
+    public IObservable<ISourceData> SourcesStream => DesignData.ToObservable();
     
     public Task AddSourceAsync(ISourceData sourceUri, CancellationToken cancel = default)
     {
