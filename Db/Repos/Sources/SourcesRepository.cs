@@ -1,4 +1,5 @@
 using System.Data;
+using System.Text;
 using Dapper;
 using Db.Models;
 using Microsoft.Data.Sqlite;
@@ -57,13 +58,70 @@ public sealed class SourcesRepository : ISourcesRepository
         return result;
     }
 
-    public Task<IEnumerable<Source>> GetManyAsync(
-        Action<Source>? predicate = null,
+    public async Task<IEnumerable<Source>> GetManyAsync(
+        Action<SourcePredicate>? predicate = null,
         int? skip = null, 
         int? take = null, 
         CancellationToken cancel = default
     )
     {
-        throw new NotImplementedException();
+        using IDbConnection db = new SqliteConnection(_dbContext.Connection);
+
+        var sb = new StringBuilder($"SELECT * FROM {Source.TableName}");
+        var parameters = new DynamicParameters();
+        
+        if (predicate is not null)
+        {
+            var sourcePredicate = new SourcePredicate();
+            predicate.Invoke(sourcePredicate);
+            
+            var conditions = new List<string>();
+
+            if (sourcePredicate.Id is not null)
+            {
+                conditions.Add($"{nameof(Source.Id)} = @Id");
+                parameters.Add("Id", sourcePredicate.Id);
+            }
+
+            if (sourcePredicate.Url is not null)
+            {
+                conditions.Add($"{nameof(Source.Url)} = @Url");
+                parameters.Add("Url", sourcePredicate.Url);
+            }
+
+            if (sourcePredicate.Type is not null)
+            {
+                conditions.Add($"{nameof(Source.Type)} = @Type");
+                parameters.Add("Type", sourcePredicate.Type);
+            }
+
+            if (conditions.Count > 0)
+            {
+                sb.Append($" WHERE {string.Join(" AND ", conditions)}");
+            }
+        }
+        
+        if (skip is not null)
+        {
+            sb.Append(" LIMIT -1 OFFSET @Skip");
+            parameters.Add("Skip", skip);
+        }
+        
+        if (take is not null)
+        {
+            if (skip is null)
+            {
+                sb.Append(" LIMIT @Take");
+            }
+            else
+            {
+                sb.Replace("LIMIT -1", "LIMIT @Take");
+                parameters.Add("Take", take);
+            }
+        }
+        
+        var cmd = new CommandDefinition(sb.ToString(), parameters, cancellationToken: cancel);
+        var result = await db.QueryAsync<Source>(cmd);
+        return result;
     }
 }

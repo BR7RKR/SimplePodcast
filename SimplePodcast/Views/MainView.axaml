@@ -19,17 +19,11 @@
                 VerticalAlignment="Top" 
                 HorizontalAlignment="Stretch"
                 DataContext="{CompiledBinding HeaderViewModel}"/>
-            <views:SettingsView
+            <ContentControl 
                 DockPanel.Dock="Top"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Center"
-                IsVisible="{CompiledBinding IsSettingsVisible}"
-                />
-            <views:PodcastsListView 
-                DockPanel.Dock="Top"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Center"
-                IsVisible="{CompiledBinding !IsSettingsVisible}"/>
+                Content="{CompiledBinding CurrentContent}"/>
             <views:PlayerView 
                 DockPanel.Dock="Bottom" 
                 VerticalAlignment="Bottom"/>

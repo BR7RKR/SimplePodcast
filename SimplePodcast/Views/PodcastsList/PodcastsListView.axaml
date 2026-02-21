@@ -4,8 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:podcast="clr-namespace:SimplePodcast.Views.Podcast"
              xmlns:u="https://irihi.tech/ursa"
+             xmlns:viewModels="clr-namespace:SimplePodcast.ViewModels"
              mc:Ignorable="d" d:DesignWidth="400"
-             x:Class="SimplePodcast.Views.PodcastsListView">
+             x:Class="SimplePodcast.Views.PodcastsListView"
+             x:DataType="viewModels:PodcastsListViewModel">
     <Design.PreviewWith>
     </Design.PreviewWith>
     

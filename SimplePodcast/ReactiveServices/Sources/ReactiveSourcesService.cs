@@ -26,6 +26,7 @@ public sealed class ReactiveSourcesService : ReactiveServiceBase, IReactiveSourc
         );
         SourcesStream = Observable
             .Interval(TimeSpan.FromMinutes(2))
+            .StartWith(0)
             .SelectMany(_ => Observable.FromAsync(async ct =>
                 {
                     try

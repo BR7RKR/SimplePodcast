@@ -3,7 +3,6 @@ using System.Collections.ObjectModel;
 using System.Reactive.Disposables.Fluent;
 using System.Reactive.Linq;
 using Core;
-using Db.Models;
 using DynamicData;
 using ReactiveUI;
 
@@ -55,7 +54,6 @@ public class SettingsViewModel : ViewModelBase
             .Subscribe(source => sourcesFromDb.AddOrUpdate(source))
             .DisposeWith(Disposables);
     }
-    
     
     public ReadOnlyObservableCollection<SourceViewModel> SourcesView => _sourcesView;
 }

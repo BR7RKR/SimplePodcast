@@ -12,6 +12,7 @@ public static class CommonDependencies
         services.AddTransient<MainViewModel>();
         services.AddTransient<SettingsViewModel>();
         services.AddTransient<HeaderViewModel>();
+        services.AddTransient<PodcastsListViewModel>();
         
         // Services
         services.AddSingleton<INotificationManagerHost, NotificationManagerHost>();

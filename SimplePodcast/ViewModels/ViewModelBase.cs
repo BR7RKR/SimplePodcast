@@ -2,9 +2,7 @@
 using System.Reactive.Disposables;
 using System.Runtime.CompilerServices;
 using System.Threading;
-using ReactiveUI;
 using ReactiveUI.Validation.Helpers;
-using Ursa.Controls;
 
 namespace SimplePodcast.ViewModels;
 
