@@ -8,6 +8,9 @@
              mc:Ignorable="d"
              x:Class="SimplePodcast.Views.SettingsView"
              x:DataType="viewModels:SettingsViewModel">
+    <Design.DataContext>
+        <viewModels:SettingsViewModel/>
+    </Design.DataContext>
     <DockPanel VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10" VerticalSpacing="20">
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" DockPanel.Dock="Top" Spacing="60">
             <Button Theme="{DynamicResource BorderlessButton}" Classes="Secondary">

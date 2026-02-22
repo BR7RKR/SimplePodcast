@@ -2,7 +2,6 @@ using System;
 using System.Collections.ObjectModel;
 using System.Reactive.Disposables.Fluent;
 using System.Reactive.Linq;
-using Core;
 using DynamicData;
 using ReactiveUI;
 
@@ -20,38 +19,13 @@ public class SettingsViewModel : ViewModelBase
     
     public SettingsViewModel(IReactiveSourcesService sourcesService)
     {
-        var sourcesFromDb = new SourceCache<ISourceData, int>(source =>  source.Id)
-            .DisposeWith(Disposables);
-        sourcesFromDb
-            .Connect()
+        sourcesService
+            .ConnectWithRefresh()
             .Transform(s => new SourceViewModel(s))
             .ObserveOn(RxSchedulers.MainThreadScheduler)
             .Bind(out _sourcesView) // TODO: fix in design
             .DisposeMany()
             .Subscribe()
-            .DisposeWith(Disposables);
-
-        sourcesService.OnSourcesChanged
-            .ObserveOn(RxSchedulers.MainThreadScheduler)
-            .Subscribe(info =>
-            {
-                switch (info.Reason)
-                {
-                    case SourcesChangeReason.Added:
-                    case SourcesChangeReason.Updated:
-                        sourcesFromDb.AddOrUpdate(info.Source);
-                        break;
-                    case SourcesChangeReason.Removed:
-                        sourcesFromDb.RemoveKey(info.Source.Id);
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-            }).DisposeWith(Disposables);
-        
-        sourcesService.SourcesStream
-            .ObserveOn(RxSchedulers.MainThreadScheduler)
-            .Subscribe(source => sourcesFromDb.AddOrUpdate(source))
             .DisposeWith(Disposables);
     }
     

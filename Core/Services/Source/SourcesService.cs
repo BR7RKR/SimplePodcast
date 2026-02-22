@@ -49,9 +49,9 @@ public sealed class SourcesService : ISourcesService
         });
     }
 
-    public async Task RemoveSourceAsync(ISourceData sourceUri, CancellationToken cancel = default)
+    public async Task RemoveSourceAsync(int id, CancellationToken cancel = default)
     {
-        await _repository.DeleteAsync(sourceUri.Id, cancel).ConfigureAwait(false);
+        await _repository.DeleteAsync(id, cancel).ConfigureAwait(false);
     }
     
     private async Task ValidateSourceDataAsync(ISourceData sourceData, CancellationToken cancel = default)

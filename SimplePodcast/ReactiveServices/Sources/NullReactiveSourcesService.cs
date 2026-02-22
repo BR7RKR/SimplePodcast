@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reactive.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Core;
 using Db.Models;
+using DynamicData;
 
 namespace SimplePodcast;
 
@@ -32,17 +34,12 @@ public sealed class NullReactiveSourcesService : IReactiveSourcesService
         },
     ];
     
-    public IObservable<SourceChangedInfo> OnSourcesChanged => Observable.Empty<SourceChangedInfo>();
-    public IObservable<ISourceData> OnSourceAdded => Observable.Empty<ISourceData>();
-    public IObservable<ISourceData> OnSourceRemoved => Observable.Empty<ISourceData>();
-    public IObservable<ISourceData> SourcesStream => DesignData.ToObservable();
-    
     public Task AddSourceAsync(ISourceData sourceUri, CancellationToken cancel = default)
     {
         return Task.CompletedTask;
     }
 
-    public Task RemoveSourceAsync(ISourceData sourceUri, CancellationToken cancel = default)
+    public Task RemoveSourceAsync(int id, CancellationToken cancel = default)
     {
         return Task.CompletedTask;
     }
@@ -50,5 +47,17 @@ public sealed class NullReactiveSourcesService : IReactiveSourcesService
     public Task<IEnumerable<ISourceData>> GetAllSourcesAsync(CancellationToken cancel = default)
     {
         return Task.FromResult(DesignData);
+    }
+
+    public IObservable<IChangeSet<ISourceData, int>> Connect()
+    {
+        var cache = new SourceCache<ISourceData, int>(source => source.Id);
+        cache.AddOrUpdate(DesignData);
+        return cache.Connect();
+    }
+
+    public Task RefreshAsync(CancellationToken cancel = default)
+    {
+        return Task.CompletedTask;
     }
 }
